@@ -12,7 +12,7 @@
             <ol>
                 <li>
                     <label for="search-text">検索をしましょう : </label>
-                    <input type="search" name="search-text" id="search-text"
+                    <input type="search" name="search-text"
                         placeholder="入力して検索">
                 </li>
                 <li><input type="submit" value="検索"></li>
@@ -24,29 +24,27 @@
 
         <p>jsを利用 : </p>
         <form th:action="@{/search}" method="post">
-            <ol>
-                <li>
-                    <label for="search-text">検索をしましょう : </label>
-                    <input type="search" name="search-text" id="search-text"
-                        onchange="" placeholder="入力して検索">
-                </li>
-                <!--            <li><input type="submit" value="検索"></li>-->
-            </ol>
+            <div class="search-wrapper">
+                <label for="search-text">検索をしましょう : </label>
+                <input class="search" list="search-list" type="search"
+                    id="search-text"
+                    placeholder="入力して検索" data-search>
+                <datalist id="search-list" search-data-list></datalist>
+            </div>
+            <input type="submit" value="検索">
         </form>
 
         <!-- ////////////////////////////////////////////////////////// -->
 
-
-        <div class="search-wrapper">
-            <label for="search">Search Users : </label>
-            <input type="search" id="search" data-search>
-        </div>
         <div class="user-cards" data-user-cards-container></div>
         <template data-user-template>
             <div class="card">
                 <div class="header" data-header></div>
                 <div class="body" data-body></div>
             </div>
+        </template>
+        <template data-list-elem-template>
+            <option class="data-elem" value="" data-elem>some</option>
         </template>
     </body>
 </html>
