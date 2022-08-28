@@ -1,21 +1,52 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8">
-    <title>home</title>
-</head>
-<body>
-    <form th:action="@{/search}" method="post">
-        <ol>
-            <li>
-                <label for="search-text">検索をしましょう : </label>
-                <input type="search" name="search-text" id="search-text" placeholder="入力して検索">
-            </li>
-            <li><input type="submit" value="検索"></li>
-        </ol>
-    </form>
-    <th:block th:each="sampleUser : ${sampleUsers}">
-        <p th:text="${sampleUser.name}"></p>
-    </th:block>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>home</title>
+        <link rel="stylesheet" href="styles.css">
+        <script src="script.js" defer></script>
+    </head>
+    <body>
+        <p>通常 : </p>
+        <form th:action="@{/search}" method="post">
+            <ol>
+                <li>
+                    <label for="search-text">検索をしましょう : </label>
+                    <input type="search" name="search-text" id="search-text"
+                        placeholder="入力して検索">
+                </li>
+                <li><input type="submit" value="検索"></li>
+            </ol>
+        </form>
+        <th:block th:each="sampleUser : ${sampleUsers}">
+            <p th:text="${sampleUser.name}"></p>
+        </th:block>
+
+        <p>jsを利用 : </p>
+        <form th:action="@{/search}" method="post">
+            <ol>
+                <li>
+                    <label for="search-text">検索をしましょう : </label>
+                    <input type="search" name="search-text" id="search-text"
+                        onchange="" placeholder="入力して検索">
+                </li>
+                <!--            <li><input type="submit" value="検索"></li>-->
+            </ol>
+        </form>
+
+        <!-- ////////////////////////////////////////////////////////// -->
+
+
+        <div class="search-wrapper">
+            <label for="search">Search Users : </label>
+            <input type="search" id="search" data-search>
+        </div>
+        <div class="user-cards" data-user-cards-container></div>
+        <template data-user-template>
+            <div class="card">
+                <div class="header" data-header></div>
+                <div class="body" data-body></div>
+            </div>
+        </template>
+    </body>
 </html>
